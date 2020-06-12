@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        #top #topic{
+            position: relative;
+            font-style: oblique;
+            font-size: 40px;
+            left: 20%;
+            color: #d5d5d5;
+        }
+        #top{
+            height: 60px;
+            width: 100%;
+            background-color: black;
+        }
+        .btn-group{
+            position: absolute;
+            width: 600px;
+            left: 540px;
+            top: 0;
+        }
+        .btn-secondary{
+            height: 60px;
+            background-color: black;
+            font-style: oblique;
+        }
+        #formGroupExampleInput{
+            position: absolute;
+            width: 15%;
+            top: 10px;
+            right: 100px;
+            background-color: aliceblue;
+            color: black;
+  
+        }
+        #searchIcon{
+            position: absolute;
+            top: 22px;
+            margin-left: 92%;
+        }
+        #main{
+
+            display: flex;
+            background-color: #f5f5f5;
+        }
+        #main #left{
+            width: 80%;
+            height: 1000px;
+            margin-left: 15%;
+            margin-top: 5%;
+            background-color: #ffffff;
+            border: 1px solid #d3d3d3;
+            border-right: 0;
+        }
+        #main #right{
+            height: 800px;
+            width: 25%;
+            margin-right: 15%;
+            margin-top: 16.85%;
+            background-color: #ffffff;
+            border: 1px solid #d3d3d3;
+        }
+        #songListImg{
+            width: 250px;
+            height: 250px;
+            margin-top: 8%;
+            margin-left: 8%;
+            border-style: double;
+            border-color: #9c9b9d;
+        }
+        #description{
+            display: flex;
+        }
+        #btn{
+            position: absolute;
+            left: 335px;
+            top: 520px;
+        }
+        #btn-play{
+            width: 55px;
+            height: 30px;
+            margin-left: 30px;
+            font-size: 15px;
+            border-radius: 10px;
+            outline: 0;
+
+        }
+        #btn-dl{
+            width: 55px;
+            height: 30px;
+            margin-left: 30px;
+            font-size: 15px;
+            border-radius: 10px;
+            outline: 0;
+        }
+        #descript{
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 700px;
+            top: 310px;
+            font-size: 15px;
+            color: #666666;
+            overflow-x: auto;
+        }
+        #songs{
+            width: 80%;
+            height: 55%;
+            margin-top: 15%;
+            margin-left: 5%;
+        }
+        li div{
+            height: 100px;
+            width: 200px;
+            text-overflow: ellipsis;  /* ellipsis:显示省略符号来代表被修剪的文本  string:使用给定的字符串来代表被修剪的文本*/
+            white-space: nowrap;   /* nowrap:规定段落中的文本不进行换行   */
+            overflow: hidden;
+        }
+        li div:hover{
+            text-decoration: underline black;
+        }
+    </style>
+    <title>PlayList</title>
+</head>
+<body>
+<!-- 顶部 -->
+<div id="top">
+    <!--名字-->
+    <label id="topic">芝士音乐</label>
+    <!--按钮组-->
+    <div id="topButton" class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-secondary">每日推荐</button>
+        <button type="button" class="btn btn-secondary">排行榜</button>
+        <button type="button" class="btn btn-secondary">我的音乐</button>
+    </div>
+    <!--搜索框-->
+    <div class="form-group" id="search">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="输入歌名或歌手名">
+        <svg id="searchIcon" class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+        </svg>
+    </div>
+    <div id="main">
+        <!-- 左边 -->
+        <div id="left">
+            <div id="description">
+                <img :src="img" id="songListImg">
+                <img src="songList.png" style="width: 60px; height: 25px; margin-left: 8%; margin-top: 8%">
+                <span id="name" style="margin-left: 2%;margin-top: 7%; font-style: normal; font-weight: bold; font-size: 24px; margin-right: 5%">
+                    {{name}}
+                </span>
+                <div id="btn">
+                    <button id="btn-play">播放</button>
+                    <button id="btn-dl">下载</button>
+                </div>
+                <span id="descript">
+                    {{description}}
+                </span>
+            </div>
+            <div id="songs">
+                <span style="margin-top: 20%; font-size: 20px; font-style: oblique;">
+                    歌曲列表
+                </span>
+                <div style="border-bottom: 2px solid #c20c0c"></div>
+                <span style="position:absolute; top: 660px; left: 450px; font-size: 20px;">歌名</span>
+                <span style="position:absolute; top: 660px; left: 700px; font-size: 20px;">歌手</span>
+                <span style="position:absolute; top: 660px; left: 900px; font-size: 20px;">专辑</span>
+
+                <ul style="list-style-type: none;" v-for="(name, index) in songsName">
+                    <li>
+                            <div :style="{'position': 'absolute', 'top': 700+40*index+'px', 'left': '350px'}">{{index}}</div>
+                            <div :style="{'position': 'absolute', 'top': 700+40*index+'px', 'left': '450px'}">{{name}}</div>
+                            <div :style="{'position': 'absolute', 'top': 700+40*index+'px', 'left': '700px'}">{{singers[index]}}</div>
+                            <div :style="{'position': 'absolute', 'top': 700+40*index+'px', 'left': '900px'}">{{zjsName[index]}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 右边 -->
+        <div id="right">
+
+        </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script>
+    let songs = new Vue({
+        el: "#left",
+        data: {
+            img: null,
+            description: "简述：",
+            name: null,
+            songsId: [],
+            songsName: [],
+            singers:[],
+            zjsName:[],
+            zjsId:[]
+        },
+        mounted(){
+            let id = this.getQueryVariable("id");
+            axios.get("http://localhost:3000/playlist/detail?id="+id).
+            then(resource=>{
+                this.name = resource.data.playlist.name;
+                this.description += resource.data.playlist.description;
+                this.img = resource.data.playlist.coverImgUrl;
+                let length = resource.data.playlist.tracks.length;
+                for (let i = 0; i < length; ++i){
+                    this.songsName.push(resource.data.playlist.tracks[i].name);
+                    this.singers.push(resource.data.playlist.tracks[i].ar[0].name);
+                    this.songsId.push(resource.data.playlist.tracks[i].ar[0].id);
+                    this.zjsId.push(resource.data.playlist.tracks[i].al.id);
+                    this.zjsName.push(resource.data.playlist.tracks[i].al.name);
+                }
+            })
+        },
+        methods: {
+            getQueryVariable: function(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                    if(pair[0] == variable){return pair[1];}
+                }
+                return false;
+            }
+        }
+    })
+</script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
